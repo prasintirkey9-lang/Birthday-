@@ -116,6 +116,21 @@ backdrop-filter:blur(8px);
 box-shadow:0 0 15px rgba(255,0,120,0.5);
 }
 
+/* Special Heart 4 */
+.special-love{
+font-size:18px;
+font-weight:bold;
+color:#ff99cc;
+animation:pulse 1.5s infinite;
+text-shadow:0 0 15px #ff2f80;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.08);}
+100%{transform:scale(1);}
+}
+
 /* Final Card */
 .card{
 background:#ffc0d9;
@@ -184,6 +199,10 @@ setTimeout(()=>heart.remove(),7000);
 <div class="love-box">Please Mujhe chor ke kabhi mat jana🥺❤️</div>
 <div class="love-box">Love you so much my sweetheart ❤️🥺😘🤗</div>
 
+<div class="love-box special-love">
+Aaj hamare relationship ko 1415 din ho gaye 💍❤️
+</div>
+
 <button onclick="next(3); startTyping(); firework();">See Final Note 💖</button>
 </div>
 
@@ -243,7 +262,7 @@ setTimeout(()=>spark.remove(),1000);
 }
 }
 
-/* Love Counter (Fixed Date Added) */
+/* Love Counter */
 let startDate = new Date("2022-03-31");
 function updateCounter(){
 let now=new Date();
