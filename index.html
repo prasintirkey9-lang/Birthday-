@@ -6,298 +6,229 @@
 <title>Happy Birthday ❤️</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif;}
 body{
-height:100vh;
 overflow:hidden;
-background:#000;
-display:flex;
-align-items:center;
-justify-content:center;
+background:linear-gradient(135deg,#3b003b,#7a004f,#ff0066);
 color:white;
-position:relative;
-cursor:none;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
 }
 
-/* Slow Moving Background Hearts */
-.bg-heart{
-position:absolute;
-font-size:14px;
-opacity:0.15;
-animation:slowMove 25s linear infinite;
-}
-@keyframes slowMove{
-0%{transform:translateY(100vh);}
-100%{transform:translateY(-10vh);}
-}
-
-/* Floating Hearts */
-.float-heart{
-position:absolute;
-bottom:-20px;
-animation:float 7s linear infinite;
-opacity:0.7;
-}
-@keyframes float{
-0%{transform:translateY(0);opacity:0}
-50%{opacity:1}
-100%{transform:translateY(-100vh);opacity:0}
-}
-
-/* Sparkle Cursor */
-.sparkle{
-position:absolute;
-width:6px;
-height:6px;
-background:#ff99cc;
-border-radius:50%;
-pointer-events:none;
-animation:fade 1s linear forwards;
-}
-@keyframes fade{
-to{opacity:0; transform:scale(2);}
-}
-
-/* Sections */
-.section{
+.page{
 position:absolute;
 width:100%;
 height:100%;
-display:flex;
+display:none;
 flex-direction:column;
-align-items:center;
 justify-content:center;
-text-align:center;
-padding:20px;
-transition:0.8s ease;
-background:radial-gradient(circle at top,#2a001c,#000);
-}
-.hidden{
-opacity:0;
-pointer-events:none;
-transform:scale(0.9);
+align-items:center;
+animation:fade 1s ease;
 }
 
-/* Glow Name */
-.glow-name{
-font-size:26px;
-margin-top:10px;
-color:#ff80bf;
-animation:glow 2s infinite alternate;
-}
-@keyframes glow{
-from{text-shadow:0 0 10px #ff2f80;}
-to{text-shadow:0 0 40px #ff99cc;}
-}
-
-h1{
-font-size:30px;
-margin-bottom:10px;
-color:#ff6aa5;
-text-shadow:0 0 20px #ff2f80;
+@keyframes fade{
+from{opacity:0;transform:scale(0.9);}
+to{opacity:1;transform:scale(1);}
 }
 
 button{
-padding:14px 28px;
+padding:12px 25px;
 border:none;
-border-radius:40px;
-background:linear-gradient(45deg,#ff2f80,#ff6aa5);
+border-radius:30px;
+background:linear-gradient(45deg,#ff0066,#ff4da6);
 color:white;
-font-size:15px;
+font-size:18px;
 cursor:pointer;
 margin-top:20px;
-box-shadow:0 0 20px #ff2f80;
+box-shadow:0 0 15px #ff4da6;
 transition:0.3s;
 }
-button:hover{ transform:scale(1.1); }
 
-/* Love Boxes */
-.love-box{
-background:rgba(255,255,255,0.1);
-padding:12px;
-border-radius:15px;
-margin:8px 0;
-width:90%;
-max-width:320px;
-backdrop-filter:blur(8px);
-box-shadow:0 0 15px rgba(255,0,120,0.5);
+button:hover{
+transform:scale(1.1);
 }
 
-.special-love{
-font-size:18px;
+.glow{
+font-size:30px;
 font-weight:bold;
-color:#ff99cc;
-animation:pulse 1.5s infinite;
-text-shadow:0 0 20px #ff2f80;
-}
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.08);}
-100%{transform:scale(1);}
+animation:glow 2s infinite alternate;
 }
 
-/* Final Card */
-.card{
-background:#ffc0d9;
-color:black;
+@keyframes glow{
+from{text-shadow:0 0 5px white;}
+to{text-shadow:0 0 25px #ff99cc;}
+}
+
+.heart{
+font-size:40px;
+cursor:pointer;
+margin:10px;
+transition:0.3s;
+}
+.heart:hover{transform:scale(1.3);}
+
+.hidden{display:none;}
+
+.note-box{
+background:#ffffff22;
 padding:25px;
 border-radius:20px;
-width:95%;
-max-width:420px;
-box-shadow:0 0 40px #ff2f80;
-}
-.card p{
-font-size:14px;
-line-height:1.6;
-min-height:150px;
+width:80%;
+max-width:500px;
+margin-top:20px;
 }
 
-/* Love Counter */
-.counter{
-margin-top:10px;
-font-size:14px;
-color:#ffb3d9;
+#typewriter{
+white-space:pre-wrap;
+}
+
+.love-meter{
+width:80%;
+height:20px;
+background:#fff3;
+border-radius:20px;
+margin-top:20px;
+overflow:hidden;
+}
+.fill{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#ff0066,#ff99cc);
+animation:fillAnim 3s forwards;
+}
+@keyframes fillAnim{
+to{width:100%;}
+}
+
+.slideshow img{
+width:200px;
+height:250px;
+object-fit:cover;
+border-radius:15px;
+margin:10px;
+animation:fade 1s;
+}
+
+.float-heart{
+position:absolute;
+color:#ff99cc;
+animation:float 6s linear infinite;
+}
+@keyframes float{
+0%{transform:translateY(100vh);opacity:0;}
+100%{transform:translateY(-10vh);opacity:1;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- Slow Background Hearts -->
-<script>
-for(let i=0;i<40;i++){
-let h=document.createElement("div");
-h.innerHTML="❤️";
-h.className="bg-heart";
-h.style.left=Math.random()*100+"vw";
-h.style.animationDuration=(20+Math.random()*20)+"s";
-document.body.appendChild(h);
-}
-</script>
-
-<!-- Floating Hearts -->
-<script>
-setInterval(()=>{
-let heart=document.createElement("div");
-heart.innerHTML="❤️";
-heart.className="float-heart";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(15+Math.random()*20)+"px";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),7000);
-},700);
-</script>
-
-<!-- Sparkle Cursor -->
-<script>
-document.addEventListener("mousemove",function(e){
-let spark=document.createElement("div");
-spark.className="sparkle";
-spark.style.left=e.pageX+"px";
-spark.style.top=e.pageY+"px";
-document.body.appendChild(spark);
-setTimeout(()=>spark.remove(),1000);
-});
-</script>
-
-<!-- PAGE 1 -->
-<div id="page1" class="section">
-<h1>Happy Birthday My Love 🎂❤️</h1>
-<div class="glow-name">Mrs. Anshu Tirkey 💖</div>
-<div class="counter" id="loveCounter"></div>
-<button onclick="next(2)">Open Your Surprise 💌</button>
+<div id="page1" class="page" style="display:flex;">
+<h1>Happy Birthday ❤️</h1>
+<h2 class="glow">Mrs. Anshu Tirkey</h2>
+<button onclick="nextPage('page2')">Open Your Surprise 💖</button>
 </div>
 
-<!-- PAGE 2 -->
-<div id="page2" class="section hidden">
-<h1>My Love For You ❤️</h1>
-
-<div class="love-box">HappY birthdaY my wife ❤️😘</div>
-<div class="love-box">Please Mujhe chor ke kabhi mat jana🥺❤️</div>
-<div class="love-box">Love you so much my sweetheart ❤️🥺😘🤗</div>
-<div class="love-box special-love">Aaj hamare relationship ko 1415 din ho gaye 💍❤️</div>
-
-<button onclick="next(3); startTyping(); firework();">See Final Note 💖</button>
+<div id="page2" class="page">
+<h2>Tap each heart ❤️</h2>
+<div>
+<span class="heart" onclick="reveal('m1')">❤️</span>
+<span class="heart" onclick="reveal('m2')">❤️</span>
+<span class="heart" onclick="reveal('m3')">❤️</span>
+<span class="heart" onclick="reveal('m4')">💍</span>
+</div>
+<p id="m1" class="hidden">Happy Birthday My Wife ❤️😘</p>
+<p id="m2" class="hidden">Please Mujhe chor ke kabhi mat jana 🥺❤️</p>
+<p id="m3" class="hidden">Love you so much my sweetheart ❤️🥺😘🤗</p>
+<p id="m4" class="hidden">Aaj hamare relationship ko 1415 din ho gaye 💍❤️</p>
+<button onclick="nextPage('page3')">See Final Note 💌</button>
 </div>
 
-<!-- PAGE 3 -->
-<div id="page3" class="section hidden">
-<div class="card">
-<h2>A Little Note For You 💌</h2>
-<p id="typedText"></p>
-<button onclick="foreverPopup()">Will you stay forever? 💍</button>
+<div id="page3" class="page">
+<h2>A little note for you ❤️</h2>
+<div class="note-box">
+<p id="typewriter"></p>
 </div>
+<div class="love-meter"><div class="fill"></div></div>
+<button onclick="nextPage('page4')">Special Surprise 💖</button>
+</div>
+
+<div id="page4" class="page">
+<h2>Our Beautiful Memories 💕</h2>
+<div class="slideshow">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+<img src="photo5.jpg">
+</div>
+<button onclick="nextPage('page5')">One Last Question 💍</button>
+</div>
+
+<div id="page5" class="page">
+<h2>Will You Stay Forever With Me? 💍</h2>
+<button onclick="yes()">Yes 😘</button>
+<button id="noBtn" onmouseover="moveNo()">No 😅</button>
 </div>
 
 <script>
-function next(num){
-document.getElementById("page1").classList.add("hidden");
-document.getElementById("page2").classList.add("hidden");
-document.getElementById("page3").classList.add("hidden");
-document.getElementById("page"+num).classList.remove("hidden");
+
+function nextPage(id){
+document.querySelectorAll('.page').forEach(p=>p.style.display='none');
+document.getElementById(id).style.display='flex';
 }
 
-/* Typewriter */
-const message = `Muje nii pata main tmhare liye deserve krta hu ya nii🥺 lekin tm meri life ki sabse precious chij ho❤️.
+function reveal(id){
+document.getElementById(id).classList.remove("hidden");
+}
 
-Pahle ki sari galtiya bhula kar tmhare birthdaY ke din se ek nayi suruat karte hai na bby 🥺🤗.
+function moveNo(){
+let btn=document.getElementById("noBtn");
+btn.style.position="absolute";
+btn.style.top=Math.random()*80+"%";
+btn.style.left=Math.random()*80+"%";
+}
 
-Ho sake to Please muje maaf kar dena or Please muje kabhi chor ke mat jana. Main tmko bahut miss kr rha hu🥺🥺.
+function yes(){
+alert("Yayyy ❤️ I Love You Forever 💍💖");
+}
 
-Anshu tm duniya ki sabse best lover ho muje tmhare alawa koi or pasand v nii aati Please mat jana🥺❤️.
+let text=`Muje nii pata main tmhare liye deserve krta hu ya nii 🥺
+lekin tm meri life ki sabse precious chij ho ❤️.
 
-HappY birthdaY My Wife😘❤️ Tm hamesha khush rahna main tmhare liye hamesha khada hu or i wish ki tmhara har sapna pura ho😘❤️🤗.
+Pahle ki sari galtiya bhula kar tmhare birthdaY ke din se
+ek nayi suruat karte hai na bby 🥺🤗.
 
-Love you so much dear Wife🥺😘🤗❤️`;
+Ho sake to Please muje maaf kar dena.
+Main tmko bahut miss kr rha hu 🥺.
+
+Happy Birthday My Wife ❤️😘
+Love you so much dear Wife ❤️`;
 
 let i=0;
-function startTyping(){
-let textArea=document.getElementById("typedText");
-textArea.innerHTML="";
-i=0;
-function type(){
-if(i<message.length){
-textArea.innerHTML+=message.charAt(i);
+function typeWriter(){
+if(i<text.length){
+document.getElementById("typewriter").innerHTML+=text.charAt(i);
 i++;
-setTimeout(type,40);
+setTimeout(typeWriter,40);
 }
 }
-type();
-}
+typeWriter();
 
-/* Firework */
-function firework(){
-for(let i=0;i<30;i++){
-let spark=document.createElement("div");
-spark.className="sparkle";
-spark.style.left=Math.random()*100+"vw";
-spark.style.top=Math.random()*100+"vh";
-document.body.appendChild(spark);
-setTimeout(()=>spark.remove(),1000);
+function createHeart(){
+let heart=document.createElement("div");
+heart.className="float-heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=Math.random()*20+20+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
 }
-}
+setInterval(createHeart,800);
 
-/* Love Counter */
-let startDate = new Date("2022-03-31");
-function updateCounter(){
-let now=new Date();
-let diff=now-startDate;
-let days=Math.floor(diff/(1000*60*60*24));
-document.getElementById("loveCounter").innerText=
-"Together for "+days+" days ❤️";
-}
-updateCounter();
-
-/* Forever Popup */
-function foreverPopup(){
-alert("Forever and Always ❤️💍");
-}
 </script>
 
 </body>
