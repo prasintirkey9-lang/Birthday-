@@ -10,13 +10,13 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family: 'Segoe UI', sans-serif;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
 height:100vh;
 overflow:hidden;
-background: radial-gradient(circle at top,#3a0026,#12000f);
+background:radial-gradient(circle at top,#3a0026,#12000f);
 display:flex;
 align-items:center;
 justify-content:center;
@@ -28,15 +28,13 @@ position:relative;
 .heart{
 position:absolute;
 bottom:-20px;
-font-size:20px;
-animation: float 6s linear infinite;
+animation:float 6s linear infinite;
 opacity:0.7;
 }
-
 @keyframes float{
-0%{transform:translateY(0); opacity:0}
+0%{transform:translateY(0);opacity:0}
 50%{opacity:1}
-100%{transform:translateY(-100vh); opacity:0}
+100%{transform:translateY(-100vh);opacity:0}
 }
 
 /* Sections */
@@ -60,19 +58,25 @@ transform:scale(0.9);
 }
 
 h1{
-font-size:32px;
-margin-bottom:15px;
+font-size:30px;
+margin-bottom:10px;
 color:#ff6aa5;
 text-shadow:0 0 15px #ff2f80;
 }
 
+h2{
+font-size:22px;
+margin-bottom:20px;
+color:white;
+}
+
 button{
-padding:14px 30px;
+padding:14px 28px;
 border:none;
 border-radius:40px;
 background:linear-gradient(45deg,#ff2f80,#ff6aa5);
 color:white;
-font-size:16px;
+font-size:15px;
 cursor:pointer;
 margin-top:20px;
 box-shadow:0 0 20px #ff2f80;
@@ -83,10 +87,10 @@ button:hover{
 transform:scale(1.1);
 }
 
-/* Love Types */
+/* Love Boxes */
 .love-box{
 background:rgba(255,255,255,0.1);
-padding:15px;
+padding:12px;
 border-radius:15px;
 margin:8px 0;
 width:90%;
@@ -95,31 +99,29 @@ backdrop-filter:blur(8px);
 box-shadow:0 0 15px rgba(255,0,120,0.5);
 }
 
-/* Final Note Card */
+/* Final Card */
 .card{
 background:#ffc0d9;
 color:black;
 padding:25px;
 border-radius:20px;
-width:90%;
-max-width:380px;
+width:95%;
+max-width:420px;
 box-shadow:0 0 30px #ff2f80;
-}
-
-.card h2{
-margin-bottom:15px;
+overflow-y:auto;
+max-height:80vh;
 }
 
 .card p{
 font-size:14px;
-line-height:1.5;
+line-height:1.6;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Floating Hearts -->
+<!-- Floating Hearts Script -->
 <script>
 setInterval(()=>{
 let heart=document.createElement("div");
@@ -135,7 +137,7 @@ setTimeout(()=>heart.remove(),6000);
 <!-- PAGE 1 -->
 <div id="page1" class="section">
 <h1>Happy Birthday My Love 🎂❤️</h1>
-<p>You are the most special person in my life 💖</p>
+<h2>Mrs. Anshu Tirkey 💖</h2>
 <button onclick="next(2)">Open Your Surprise 💌</button>
 </div>
 
@@ -143,10 +145,9 @@ setTimeout(()=>heart.remove(),6000);
 <div id="page2" class="section hidden">
 <h1>Types Of My Love For You ❤️</h1>
 
-<div class="love-box">Romantic Love 😘 – Tum meri heartbeat ho</div>
-<div class="love-box">Cute Love 🥰 – Tumhari smile meri weakness hai</div>
-<div class="love-box">Emotional Love 🥺 – Tumhare bina sab adhoora hai</div>
-<div class="love-box">Forever Love 💍 – Hamesha sirf tum</div>
+<div class="love-box">HappY birthdaY my wife ❤️😘</div>
+<div class="love-box">Please Mujhe chor ke kabhi mat jana🥺❤️</div>
+<div class="love-box">Love you so much my sweetheart ❤️🥺😘🤗</div>
 
 <button onclick="next(3)">See Final Note 💖</button>
 </div>
@@ -156,14 +157,19 @@ setTimeout(()=>heart.remove(),6000);
 <div class="card">
 <h2>A Little Note For You 💌</h2>
 <p>
-Muje nii pata main tmhare liye deserve krta hu ya nii🥺  
-lekin tm meri life ki sabse precious chij ho❤️.  
-Aaj se ek nayi suruat karte hai 🤗  
-Please kabhi mat jana ❤️  
-Main hamesha tmhare liye khada hu.  
+Muje nii pata main tmhare liye deserve krta hu ya nii🥺 lekin tm meri life ki sabse precious chij ho❤️.<br><br>
 
-Happy Birthday My Wife 😘❤️  
-Love you forever 🥺❤️
+Pahle ki sari galtiya bhula kar tmhare birthdaY ke din se ek nayi suruat karte hai na bby 🥺🤗.<br><br>
+
+Ho sake to Please muje maaf kar dena or Please muje kabhi chor ke mat jana.  
+Main tmko bahut miss kr rha hu🥺🥺.<br><br>
+
+Anshu tm duniya ki sabse best lover ho muje tmhare alawa koi or pasand v nii aati Please mat jana🥺❤️.<br><br>
+
+HappY birthdaY My Wife😘❤️  
+Tm hamesha khush rahna main tmhare liye hamesha khada hu or i wish ki tmhara har sapna pura ho😘❤️🤗.<br><br>
+
+Love you so much dear Wife🥺😘🤗❤️
 </p>
 </div>
 </div>
@@ -173,7 +179,6 @@ function next(num){
 document.getElementById("page1").classList.add("hidden");
 document.getElementById("page2").classList.add("hidden");
 document.getElementById("page3").classList.add("hidden");
-
 document.getElementById("page"+num).classList.remove("hidden");
 }
 </script>
