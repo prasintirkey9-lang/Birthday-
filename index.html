@@ -22,6 +22,21 @@ align-items:center;
 justify-content:center;
 color:white;
 position:relative;
+cursor:none;
+}
+
+/* Sparkle Cursor */
+.sparkle{
+position:absolute;
+width:6px;
+height:6px;
+background:#ff99cc;
+border-radius:50%;
+pointer-events:none;
+animation:fade 1s linear forwards;
+}
+@keyframes fade{
+to{opacity:0; transform:scale(2);}
 }
 
 /* Floating Hearts */
@@ -50,24 +65,22 @@ text-align:center;
 padding:20px;
 transition:0.8s ease;
 }
-
 .hidden{
 opacity:0;
 pointer-events:none;
 transform:scale(0.9);
 }
 
-/* Glowing Name */
+/* Glow Name */
 .glow-name{
 font-size:26px;
 margin-top:10px;
 color:#ff80bf;
 animation:glow 2s infinite alternate;
 }
-
 @keyframes glow{
 from{text-shadow:0 0 10px #ff2f80;}
-to{text-shadow:0 0 25px #ff99cc,0 0 40px #ff2f80;}
+to{text-shadow:0 0 30px #ff99cc,0 0 50px #ff2f80;}
 }
 
 h1{
@@ -89,9 +102,7 @@ margin-top:20px;
 box-shadow:0 0 20px #ff2f80;
 transition:0.3s;
 }
-button:hover{
-transform:scale(1.1);
-}
+button:hover{ transform:scale(1.1); }
 
 /* Love Boxes */
 .love-box{
@@ -115,18 +126,36 @@ width:95%;
 max-width:420px;
 box-shadow:0 0 30px #ff2f80;
 }
-
 .card p{
 font-size:14px;
 line-height:1.6;
 min-height:150px;
+}
+
+/* Love Counter */
+.counter{
+margin-top:10px;
+font-size:14px;
+color:#ffb3d9;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Floating Hearts Script -->
+<!-- Sparkle Cursor -->
+<script>
+document.addEventListener("mousemove",function(e){
+let spark=document.createElement("div");
+spark.className="sparkle";
+spark.style.left=e.pageX+"px";
+spark.style.top=e.pageY+"px";
+document.body.appendChild(spark);
+setTimeout(()=>spark.remove(),1000);
+});
+</script>
+
+<!-- Floating Hearts -->
 <script>
 setInterval(()=>{
 let heart=document.createElement("div");
@@ -143,6 +172,7 @@ setTimeout(()=>heart.remove(),7000);
 <div id="page1" class="section">
 <h1>Happy Birthday My Love 🎂❤️</h1>
 <div class="glow-name">Mrs. Anshu Tirkey 💖</div>
+<div class="counter" id="loveCounter"></div>
 <button onclick="next(2)">Open Your Surprise 💌</button>
 </div>
 
@@ -154,7 +184,7 @@ setTimeout(()=>heart.remove(),7000);
 <div class="love-box">Please Mujhe chor ke kabhi mat jana🥺❤️</div>
 <div class="love-box">Love you so much my sweetheart ❤️🥺😘🤗</div>
 
-<button onclick="next(3); startTyping();">See Final Note 💖</button>
+<button onclick="next(3); startTyping(); firework();">See Final Note 💖</button>
 </div>
 
 <!-- PAGE 3 -->
@@ -173,7 +203,7 @@ document.getElementById("page3").classList.add("hidden");
 document.getElementById("page"+num).classList.remove("hidden");
 }
 
-/* Typewriter Effect */
+/* Typewriter */
 const message = `Muje nii pata main tmhare liye deserve krta hu ya nii🥺 lekin tm meri life ki sabse precious chij ho❤️.
 
 Pahle ki sari galtiya bhula kar tmhare birthdaY ke din se ek nayi suruat karte hai na bby 🥺🤗.
@@ -186,21 +216,43 @@ HappY birthdaY My Wife😘❤️ Tm hamesha khush rahna main tmhare liye hamesha
 
 Love you so much dear Wife🥺😘🤗❤️`;
 
-let i = 0;
+let i=0;
 function startTyping(){
-let speed = 40;
-let textArea = document.getElementById("typedText");
-textArea.innerHTML = "";
-i = 0;
+let textArea=document.getElementById("typedText");
+textArea.innerHTML="";
+i=0;
 function type(){
-if(i < message.length){
-textArea.innerHTML += message.charAt(i);
+if(i<message.length){
+textArea.innerHTML+=message.charAt(i);
 i++;
-setTimeout(type, speed);
+setTimeout(type,40);
 }
 }
 type();
 }
+
+/* Firework */
+function firework(){
+for(let i=0;i<25;i++){
+let spark=document.createElement("div");
+spark.className="sparkle";
+spark.style.left=Math.random()*100+"vw";
+spark.style.top=Math.random()*100+"vh";
+document.body.appendChild(spark);
+setTimeout(()=>spark.remove(),1000);
+}
+}
+
+/* Love Counter (Fixed Date Added) */
+let startDate = new Date("2022-03-31");
+function updateCounter(){
+let now=new Date();
+let diff=now-startDate;
+let days=Math.floor(diff/(1000*60*60*24));
+document.getElementById("loveCounter").innerText=
+"Together for "+days+" days ❤️";
+}
+updateCounter();
 </script>
 
 </body>
