@@ -14,41 +14,48 @@
 
 html,body{
     height:100%;
-    overflow:hidden; /* SCROLL BAND */
-    font-family: Arial, Helvetica, sans-serif; /* NO CURSIVE */
-    background: radial-gradient(circle at center, #5a003f, #000);
+    overflow:hidden;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: radial-gradient(circle at center, #6a004f, #000);
     color:white;
 }
 
+/* Full screen sections */
 .section{
-    display:none;
-    position:fixed;  /* FIXED SCREEN */
-    top:0;
-    left:0;
+    position:fixed;
     width:100%;
     height:100%;
-    display:flex;
-    flex-direction:column;
+    top:0;
+    left:0;
+    display:none;
     justify-content:center;
     align-items:center;
+    flex-direction:column;
     text-align:center;
+    padding:20px;
 }
 
+/* Buttons */
 button{
-    margin-top:20px;
-    padding:12px 25px;
+    margin-top:25px;
+    padding:14px 30px;
     border:none;
-    border-radius:25px;
-    background:#ff4da6;
+    border-radius:30px;
+    background:linear-gradient(45deg,#ff4da6,#ff1a75);
     color:white;
     font-size:18px;
     cursor:pointer;
 }
 
+/* Hearts */
 .heart{
-    font-size:35px;
+    font-size:40px;
     cursor:pointer;
     margin:15px;
+    transition:0.3s;
+}
+.heart:hover{
+    transform:scale(1.2);
 }
 
 .message{
@@ -57,14 +64,25 @@ button{
     margin-top:5px;
 }
 
+/* Note box */
 .note-box{
     background:#ffc0d9;
     color:#000;
-    padding:25px;
-    border-radius:20px;
-    width:85%;
-    max-width:450px;
-    font-size:16px;
+    padding:30px;
+    border-radius:25px;
+    max-width:500px;
+    font-size:17px;
+    line-height:1.6;
+}
+
+/* Headings */
+.main-title{
+    font-size:34px;
+}
+
+.name{
+    font-size:22px;
+    margin-top:10px;
 }
 </style>
 </head>
@@ -73,8 +91,8 @@ button{
 
 <!-- STEP 1 -->
 <div id="step1" class="section" style="display:flex;">
-    <h1 style="font-size:32px;">Happy Birthday My Love 🎂❤️</h1>
-    <h2 style="margin-top:10px;">Mrs. Anshu Tirkey</h2>
+    <div class="main-title">Happy Birthday My Love 🎂❤️</div>
+    <div class="name">Mrs. Anshu Tirkey</div>
     <button onclick="nextStep(2)">Open Your Surprise 💕</button>
 </div>
 
@@ -103,7 +121,7 @@ button{
 <!-- STEP 3 -->
 <div id="step3" class="section">
     <div class="note-box">
-        <h3>A little note for you</h3>
+        <h2>A little note for you</h2>
         <br>
         Muje nii pata main tmhare liye deserve krta hu ya nii🥺 lekin tm meri life ki sabse precious chij ho❤️.
         Pahle ki sari galtiya bhula kar tmhare birthdaY ke din se ek nayi suruat karte hai na bby 🥺🤗.
