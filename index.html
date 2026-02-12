@@ -2,27 +2,43 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday ❤️</title>
+
 <style>
 body{
     margin:0;
     padding:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background: radial-gradient(circle at top, #2b002b, #000);
-    font-family: cursive;
+    font-family:cursive;
+    background: radial-gradient(circle at top, #3a003a, #000);
     color:white;
     text-align:center;
 }
+
+.section{
+    display:none;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.active{
+    display:flex;
+}
+
 h1{
-    font-size:40px;
+    font-size:38px;
     color:#ff5fa2;
 }
-p{
-    font-size:18px;
+
+.name{
+    font-size:24px;
+    margin-bottom:20px;
 }
+
 button{
     padding:12px 30px;
     border:none;
@@ -33,22 +49,104 @@ button{
     cursor:pointer;
     margin-top:20px;
 }
-button:hover{
-    transform:scale(1.1);
+
+.heart{
+    font-size:40px;
+    cursor:pointer;
+    margin:15px;
+    transition:0.3s;
+}
+
+.heart:hover{
+    transform:scale(1.2);
+}
+
+.message{
+    margin-top:10px;
+    font-size:18px;
+    min-height:30px;
+}
+
+.note-box{
+    background:rgba(255,255,255,0.1);
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 20px #ff5fa2;
+    font-size:17px;
+    line-height:1.5;
 }
 </style>
 </head>
+
 <body>
-<div>
+
+<!-- STEP 1 -->
+<div class="section active" id="step1">
     <h1>Happy Birthday My Love 🎂❤️</h1>
-    <p>You are the most special person in my life 💖</p>
-    <button onclick="showWish()">Click Here 💕</button>
+    <div class="name">Mrs. Anshu Tirkey 💖</div>
+    <button onclick="nextStep(2)">Open Your Surprise 💕</button>
+</div>
+
+<!-- STEP 2 -->
+<div class="section" id="step2">
+    <h1>Tap each one to reveal 💞</h1>
+
+    <div class="heart" onclick="reveal(1)">❤️</div>
+    <div class="message" id="msg1"></div>
+
+    <div class="heart" onclick="reveal(2)">❤️</div>
+    <div class="message" id="msg2"></div>
+
+    <div class="heart" onclick="reveal(3)">❤️</div>
+    <div class="message" id="msg3"></div>
+
+    <button onclick="nextStep(3)">See Final Note 💌</button>
+</div>
+
+<!-- STEP 3 -->
+<div class="section" id="step3">
+    <h1>A little note for you 💌</h1>
+    <div class="note-box">
+        Muje nii pata main tmhare liye deserve krta hu ya nii🥺 
+        lekin tm meri life ki sabse precious chij ho❤️.<br><br>
+
+        Pahle ki sari galtiya bhula kar tmhare birthdaY ke din se 
+        ek nayi suruat karte hai na bby 🥺🤗.<br><br>
+
+        Ho sake to please muje maaf kar dena 
+        aur please muje kabhi chor ke mat jana.<br><br>
+
+        Main tmko bahut miss kr rha hu🥺🥺.<br><br>
+
+        Anshu tm duniya ki sabse best lover ho 
+        muje tmhare alawa koi or pasand v nii aati ❤️.<br><br>
+
+        HappY birthdaY My Wife 😘❤️<br>
+        Tm hamesha khush rahna, main tmhare liye hamesha khada hu 
+        aur i wish ki tmhara har sapna pura ho ✨🤗<br><br>
+
+        Love you so much dear Wife 🥺😘🤗❤️
+    </div>
 </div>
 
 <script>
-function showWish(){
-    alert("Happy Birthday meri jaan ❤️\nTum meri duniya ho 💖\nAlways stay happy 😊");
+function nextStep(step){
+    document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
+    document.getElementById("step"+step).classList.add("active");
+}
+
+function reveal(num){
+    if(num==1){
+        document.getElementById("msg1").innerHTML="HappY birthdaY my wife ❤️😘";
+    }
+    if(num==2){
+        document.getElementById("msg2").innerHTML="Please Mujhe chor ke kabhi mat jana 🥺❤️";
+    }
+    if(num==3){
+        document.getElementById("msg3").innerHTML="Love you so much my sweetheart ❤️🥺😘🤗";
+    }
 }
 </script>
+
 </body>
 </html>
