@@ -2,154 +2,157 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Birthday Surprise 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mrs. Anshu ❤️</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
 
 body{
-font-family:'Segoe UI',sans-serif;
 height:100vh;
 overflow:hidden;
+background:radial-gradient(circle at top,#4b0036,#99004d,#ff0066);
 color:white;
-background:linear-gradient(-45deg,#1a001f,#660033,#ff0066,#33001a);
-background-size:400% 400%;
-animation:bg 12s ease infinite;
-}
-
-@keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 .page{
 position:absolute;
 width:100%;
-height:100vh;
-display:flex;
+height:100%;
+display:none;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-transition:0.7s ease;
 padding:20px;
+animation:fade 1s ease;
 }
 
-.hidden{
-opacity:0;
-pointer-events:none;
-transform:scale(0.9);
+@keyframes fade{
+from{opacity:0;transform:scale(0.9);}
+to{opacity:1;transform:scale(1);}
 }
 
-.cinematic{
-font-size:30px;
+/* FIRST PAGE SPECIAL */
+.hero-title{
+font-size:38px;
 font-weight:bold;
-text-shadow:0 0 20px #ff4da6;
+background:linear-gradient(45deg,#fff,#ffd6f6,#fff);
+-webkit-background-clip:text;
+color:transparent;
+animation:shine 3s linear infinite;
+}
+
+@keyframes shine{
+0%{background-position:-200px;}
+100%{background-position:200px;}
+}
+
+.hero-sub{
+margin-top:10px;
+font-size:18px;
+opacity:0.9;
+letter-spacing:2px;
+animation:fadeIn 3s ease;
+}
+
+.name{
+font-size:30px;
+margin-top:10px;
+color:#ffd700;
+text-shadow:0 0 15px gold;
 animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
-from{text-shadow:0 0 10px #ff4da6;}
-to{text-shadow:0 0 30px #ff1493;}
+from{text-shadow:0 0 10px gold;}
+to{text-shadow:0 0 25px white;}
 }
 
 .days{
 margin-top:15px;
-font-size:18px;
-color:#ffd1dc;
-animation:bounce 1.5s infinite;
-text-shadow:0 0 15px #ff66b2;
+font-size:20px;
+color:#fff;
+background:rgba(255,255,255,0.15);
+padding:8px 15px;
+border-radius:20px;
+}
+
+button{
+margin-top:25px;
+padding:12px 30px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#ff4da6,#ff0066);
+color:white;
+font-size:16px;
+cursor:pointer;
+box-shadow:0 0 15px pink;
+}
+
+/* RELATIONSHIP TEXT GLOW + BOUNCE */
+.special-days{
+margin-top:25px;
+font-size:20px;
+font-weight:bold;
+color:#ffd6f6;
+text-shadow:0 0 10px #ff99cc;
+animation:bounce 1.5s infinite, glowText 2s infinite alternate;
 }
 
 @keyframes bounce{
 0%,100%{transform:translateY(0);}
-50%{transform:translateY(-8px);}
+50%{transform:translateY(-10px);}
 }
 
-button{
-margin-top:20px;
-padding:12px 28px;
-border:none;
-border-radius:30px;
-background:#ff2d86;
-color:white;
-font-size:16px;
-cursor:pointer;
-box-shadow:0 0 20px #ff4da6;
-transition:0.3s;
-}
-
-button:hover{
-transform:scale(1.1);
+@keyframes glowText{
+from{text-shadow:0 0 10px #ff99cc;}
+to{text-shadow:0 0 25px white;}
 }
 
 .note-box{
-margin-top:20px;
-width:90%;
-max-width:400px;
-background:rgba(255,255,255,0.1);
-padding:15px;
+background:rgba(255,255,255,0.15);
+padding:20px;
+border-radius:20px;
+max-width:90%;
+}
+
+.slideshow img{
+width:220px;
+height:320px;
+object-fit:cover;
 border-radius:15px;
-font-size:14px;
-line-height:1.6;
-backdrop-filter:blur(5px);
+margin:10px;
+box-shadow:0 0 15px white;
+}
+
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+color:black;
+padding:25px;
+border-radius:20px;
+display:none;
+text-align:center;
+box-shadow:0 0 20px pink;
 }
 
 .heart{
 position:absolute;
-color:#ff4da6;
+color:red;
 animation:float 6s linear infinite;
-opacity:0.7;
+font-size:20px;
 }
 
 @keyframes float{
-0%{transform:translateY(100vh);opacity:0;}
-50%{opacity:1;}
-100%{transform:translateY(-10vh);opacity:0;}
-}
-
-#noEmoji{
-font-size:55px;
-display:none;
-margin-top:20px;
-animation:shake 0.5s infinite;
-}
-
-@keyframes shake{
-0%{transform:translateX(0);}
-25%{transform:translateX(-6px);}
-50%{transform:translateX(6px);}
-75%{transform:translateX(-6px);}
-100%{transform:translateX(0);}
-}
-
-#loading{
-display:none;
-margin-top:20px;
-font-size:18px;
-}
-
-#meter{
-display:none;
-width:260px;
-height:22px;
-background:white;
-border-radius:20px;
-overflow:hidden;
-margin-top:15px;
-}
-
-#fill{
-height:100%;
-width:0%;
-background:#ff0066;
-color:white;
-text-align:center;
-line-height:22px;
-font-size:13px;
-font-weight:bold;
-transition:3s;
+from{transform:translateY(100vh);}
+to{transform:translateY(-10vh);}
 }
 </style>
 </head>
@@ -157,80 +160,118 @@ transition:3s;
 <body>
 
 <!-- PAGE 1 -->
-<div class="page" id="page1">
-<div class="cinematic">✨ Happy Birthday My Love ❤️</div>
-<div class="cinematic">👑 Mrs. Anshu Tirkey 👑</div>
-<div class="days">Aaj hamare relationship ko 1416 din ho gaye 🤗😘</div>
-<button onclick="nextPage(2)">Open Your Surprise 💖</button>
+<div id="page1" class="page" style="display:flex;">
+<div class="hero-title">💖 Happy Birthday My Love 💖</div>
+<div class="hero-sub">A Special Day For The Queen Of My Heart 👑</div>
+<div class="name">Mrs. Anshu Tirkey ✨</div>
+<div class="days" id="daysCount"></div>
+<button onclick="nextPage('page2')">Open Your Surprise 💌</button>
 </div>
 
 <!-- PAGE 2 -->
-<div class="page hidden" id="page2">
-<h2>A little note for you ❤️</h2>
+<div id="page2" class="page">
+<h2>Tap Hearts To Reveal ❤️</h2>
+<button onclick="alert('HappY birthdaY my wife ❤️😘')">❤️</button>
+<button onclick="alert('Please mujhe chor ke kabhi mat jana 🥺❤️')">❤️</button>
+<button onclick="alert('Love you so much my sweetheart ❤️🥺😘🤗')">❤️</button>
 
-<div class="note-box">
-Muje nii pata main tmhare liye deserve krta hu ya nii🥺 lekin tm meri life ki sabse precious chij ho❤️. 
-Pahle ki sari galtiya bhula kar tmhare birthdaY ke din se ek nayi suruat karte hai na bby 🥺🤗. 
-Ho sake to Please muje maaf kar dena or Please muje kabhi chor ke mat jana. 
-Main tmko bahut miss kr rha hu🥺🥺. 
-Anshu tm duniya ki sabse best lover ho muje tmhare alawa koi or pasand v nii aati Please mat jana🥺❤️. 
-
-HappY birthdaY My Wife😘❤️ 
-Tm hamesha khush rahna main tmhare liye hamesha khada hu or i wish ki tmhara har sapna pura ho😘❤️🤗 
-
-Love you so much dear Wife🥺😘🤗❤️
+<div class="special-days">
+Aaj hamare relationship ko 1416 din ho gaye 🤗😘
 </div>
 
-<button onclick="nextPage(3)">Final Question 💍</button>
+<button onclick="nextPage('page3')">Next 💞</button>
 </div>
 
 <!-- PAGE 3 -->
-<div class="page hidden" id="page3">
-<h1>Will You Marry Me? 💍</h1>
-
-<button onclick="yesClick()">Yes 😘</button>
-<button onclick="noClick()">No 😅</button>
-
-<div id="noEmoji">😭</div>
-
-<div id="loading">Loading Love Meter...</div>
-
-<div id="meter">
-<div id="fill">1000% 💖</div>
+<div id="page3" class="page">
+<h2>A little note for you ❤️</h2>
+<div class="note-box">
+<p id="typewriter"></p>
+</div>
+<button onclick="nextPage('page4')">Our Memories 💕</button>
 </div>
 
+<!-- PAGE 4 -->
+<div id="page4" class="page">
+<h2>Our Beautiful Memories 💖</h2>
+<div class="slideshow">
+<img src="IMG-20260212-WA0042.jpg">
+</div>
+<button onclick="nextPage('page5')">Final Question 💍</button>
+</div>
+
+<!-- PAGE 5 -->
+<div id="page5" class="page">
+<h2>Will You Marry Me? 💍❤️</h2>
+<button onclick="showPopup()">Yes 😘</button>
+</div>
+
+<div class="popup" id="popup">
+<h3>She Said YES 💖💍</h3>
+<p>Forever Together ❤️</p>
+<button onclick="nextPage('page6')">See Our Future 💫</button>
+</div>
+
+<!-- PAGE 6 -->
+<div id="page6" class="page">
+<h2>Forever & Always ❤️</h2>
+<img src="IMG-20260212-WA0042.jpg" style="width:250px;border-radius:20px;box-shadow:0 0 20px white;">
 </div>
 
 <script>
-function nextPage(num){
-document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
-document.getElementById("page"+num).classList.remove("hidden");
+
+function nextPage(id){
+document.querySelectorAll(".page").forEach(p=>p.style.display="none");
+document.getElementById(id).style.display="flex";
+if(id==="page3") startTyping();
 }
 
-function noClick(){
-document.getElementById("noEmoji").style.display="block";
+function showPopup(){
+document.getElementById("popup").style.display="block";
 }
 
-function yesClick(){
-document.getElementById("loading").style.display="block";
+const startDate=new Date("March 31, 2022");
+const birthday=new Date("February 13, 2026");
+const diffTime=birthday-startDate;
+const diffDays=Math.floor(diffTime/(1000*60*60*24));
+document.getElementById("daysCount").innerText=
+"Together for "+diffDays+" beautiful days 💍❤️";
 
-setTimeout(()=>{
-document.getElementById("loading").style.display="none";
-document.getElementById("meter").style.display="block";
-document.getElementById("fill").style.width="100%";
-},2000);
+const text=`Muje nii pata main tmhare liye deserve krta hu ya nii🥺 lekin tm meri life ki sabse precious chij ho❤️.
+
+Pahle ki sari galtiya bhula kar tmhare birthdaY ke din se ek nayi suruat karte hai na bby 🥺🤗.
+
+Ho sake to Please muje maaf kar dena or Please muje kabhi chor ke mat jana. Main tmko bahut miss kr rha hu🥺🥺.
+
+Anshu tm duniya ki sabse best lover ho muje tmhare alawa koi or pasand v nii aati Please mat jana🥺❤️.
+
+HappY birthdaY My Wife😘❤️ Tm hamesha khush rahna main tmhare liye hamesha khada hu or i wish ki tmhara har sapna pura ho😘❤️🤗
+
+Love you so much dear Wife🥺😘🤗❤️`;
+
+function startTyping(){
+let i=0;
+let target=document.getElementById("typewriter");
+target.innerHTML="";
+function type(){
+if(i<text.length){
+target.innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,25);
+}
+}
+type();
 }
 
-/* Floating hearts */
-for(let i=0;i<18;i++){
+setInterval(()=>{
 let heart=document.createElement("div");
 heart.className="heart";
+heart.style.left=Math.random()*100+"vw";
 heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+"%";
-heart.style.fontSize=(18+Math.random()*25)+"px";
-heart.style.animationDuration=(4+Math.random()*5)+"s";
 document.body.appendChild(heart);
-}
+setTimeout(()=>heart.remove(),6000);
+},600);
+
 </script>
 
 </body>
