@@ -2,122 +2,130 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday ❤️</title>
+<title>Birthday Surprise</title>
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
 body{
-margin:0;
-font-family: 'Segoe UI', sans-serif;
-background: linear-gradient(135deg,#4b0036,#ff006a);
+font-family:'Segoe UI',sans-serif;
+background: linear-gradient(-45deg,#2b0033,#800040,#ff0066,#3d003d);
+background-size:400% 400%;
+animation:bgMove 10s ease infinite;
 color:white;
 overflow:hidden;
 text-align:center;
 }
 
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
 .page{
-display:none;
-height:100vh;
-width:100%;
 position:absolute;
-top:0;
-left:0;
+width:100%;
+height:100vh;
+display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
-flex-direction:column;
-padding:20px;
-box-sizing:border-box;
-animation: fade 0.8s ease;
+transition:0.6s;
 }
 
-@keyframes fade{
-from{opacity:0;transform:scale(0.95);}
-to{opacity:1;transform:scale(1);}
-}
-
-.active{
-display:flex;
+.hidden{
+opacity:0;
+pointer-events:none;
 }
 
 h1{
-font-size:32px;
-text-shadow:0 0 20px #ff4da6;
+font-size:30px;
+text-shadow:0 0 20px #ff66b2;
 }
 
 .glow{
-font-size:22px;
-margin-top:10px;
-animation: bounceGlow 1.5s infinite;
-color:#ffd6ec;
+animation:glow 2s infinite alternate;
 }
 
-@keyframes bounceGlow{
-0%{transform:translateY(0);text-shadow:0 0 10px pink;}
-50%{transform:translateY(-8px);text-shadow:0 0 25px #ff66cc;}
-100%{transform:translateY(0);text-shadow:0 0 10px pink;}
+@keyframes glow{
+from{text-shadow:0 0 10px #ff66b2;}
+to{text-shadow:0 0 25px #ff1493;}
+}
+
+.bounce{
+animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
 }
 
 button{
-padding:12px 25px;
+padding:12px 28px;
 border:none;
 border-radius:30px;
-background:linear-gradient(45deg,#ff007f,#ff4da6);
+background:#ff2d86;
 color:white;
 font-size:16px;
 margin-top:20px;
-box-shadow:0 0 20px #ff4da6;
+box-shadow:0 0 15px #ff4da6;
+cursor:pointer;
+transition:0.3s;
 }
 
-.note-box{
-background:rgba(255,255,255,0.1);
-padding:20px;
-border-radius:20px;
-max-width:350px;
-backdrop-filter:blur(10px);
-}
-
-#typewriter{
-min-height:150px;
-}
-
-.love-meter{
-width:80%;
-height:10px;
-background:rgba(255,255,255,0.2);
-border-radius:20px;
-margin-top:20px;
-}
-
-.fill{
-height:100%;
-width:100%;
-background:linear-gradient(90deg,#ff4da6,#ff99cc);
-border-radius:20px;
-box-shadow:0 0 15px pink;
-}
-
-.slideshow img{
-width:250px;
-height:350px;
-object-fit:cover;
-border-radius:20px;
-box-shadow:0 0 20px pink;
-display:none;
-}
-
-.slideshow img.active{
-display:block;
+button:hover{
+transform:scale(1.1);
 }
 
 .heart{
 position:absolute;
-font-size:20px;
-animation: float 6s linear infinite;
+color:#ff4da6;
+animation:float 6s linear infinite;
 }
 
 @keyframes float{
-0%{transform:translateY(100vh);opacity:1;}
+0%{transform:translateY(100vh);opacity:0;}
+50%{opacity:1;}
 100%{transform:translateY(-10vh);opacity:0;}
+}
+
+#noEmoji{
+font-size:50px;
+margin-top:20px;
+display:none;
+animation:shake 0.5s infinite;
+}
+
+@keyframes shake{
+0%{transform:translateX(0);}
+25%{transform:translateX(-5px);}
+50%{transform:translateX(5px);}
+75%{transform:translateX(-5px);}
+100%{transform:translateX(0);}
+}
+
+#loading{
+margin-top:20px;
+display:none;
+}
+
+#meter{
+width:250px;
+height:20px;
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+margin-top:20px;
+display:none;
+}
+
+#fill{
+height:100%;
+width:0%;
+background:#ff0066;
+transition:3s;
 }
 </style>
 </head>
@@ -125,88 +133,88 @@ animation: float 6s linear infinite;
 <body>
 
 <!-- PAGE 1 -->
-<div id="page1" class="page active">
-<h1>✨ Happy Birthday My Love ❤️</h1>
-<h1>👑 Mrs. Anshu Tirkey 👑</h1>
-<div class="glow">Aaj hamare relationship ko 1416 din ho gaye 🤗😘</div>
-<button onclick="nextPage('page2')">Open Your Surprise 💖</button>
+<div class="page" id="page1">
+<h1 class="glow">✨ Happy Birthday My Love ❤️</h1>
+<h1 class="glow">👑 Mrs. Anshu Tirkey 👑</h1>
+<p class="bounce glow" style="margin-top:15px;">
+Aaj hamare relationship ko 1416 din ho gaye 🤗😘
+</p>
+<button onclick="nextPage(2)">Open Your Surprise ✨</button>
 </div>
 
 <!-- PAGE 2 -->
-<div id="page2" class="page">
-<h2>Tap Hearts To Reveal ❤️</h2>
-<button onclick="showMsg(this,'Happy Birthday my wife ❤️😘')">❤️</button>
-<button onclick="showMsg(this,'Please mujhe kabhi chhod ke mat jana 🥺❤️')">❤️</button>
-<button onclick="showMsg(this,'Love you so much my sweetheart ❤️😘')">❤️</button>
-<button onclick="nextPage('page3')">Next 💞</button>
+<div class="page hidden" id="page2">
+<h1>Tap Hearts To Reveal ❤️</h1>
+<div onclick="showMessage(this)">❤️</div>
+<div onclick="showMessage(this)">❤️</div>
+<div onclick="showMessage(this)">❤️</div>
+<button onclick="nextPage(3)">Next 💖</button>
 </div>
 
 <!-- PAGE 3 -->
-<div id="page3" class="page">
-<h2>A little note for you ❤️</h2>
-<div class="note-box">
-<p id="typewriter"></p>
-</div>
-<div class="love-meter"><div class="fill"></div></div>
-<button onclick="nextPage('page4')">Our Memories 💕</button>
+<div class="page hidden" id="page3">
+<h1>A little note for you ❤️</h1>
+<p style="width:80%;margin-top:20px;">
+Muje nii pata main tmhare liye deserve krta hu ya nii 🥺
+lekin tm meri life ki sabse precious chij ho ❤️.
+Pahle ki sari galtiya bhula kar tmhare birthday ke din
+se ek nayi suruat karte hai na bby 🤗😘.
+Please muje kabhi chor ke mat jana ❤️.
+</p>
+<button onclick="nextPage(4)">Final Question 💍</button>
 </div>
 
 <!-- PAGE 4 -->
-<div id="page4" class="page">
-<h2>Our Beautiful Memories 💖</h2>
-<div class="slideshow">
-<img src="IMG-20260212-WA0042.jpg" class="active">
-<img src="IMG-20260212-WA0018.jpg">
-<img src="IMG-20250904-WA0025.jpg">
-<img src="IMG-20250904-WA0012.jpg">
-</div>
-<button onclick="nextPage('page5')">Next 💍</button>
+<div class="page hidden" id="page4">
+<h1>Will You Marry Me? 💍</h1>
+
+<button onclick="yesClick()">Yes 😘</button>
+<button onclick="noClick()">No 😅</button>
+
+<div id="noEmoji">😭</div>
+
+<div id="loading">Loading Love Meter...</div>
+
+<div id="meter">
+<div id="fill"></div>
 </div>
 
-<!-- PAGE 5 -->
-<div id="page5" class="page">
-<h2>Will You Marry Me? 💍❤️</h2>
-<button onclick="alert('She Said YES ❤️')">Yes 😘</button>
 </div>
 
 <script>
-function nextPage(id){
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-document.getElementById(id).classList.add('active');
+function nextPage(num){
+document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
+document.getElementById("page"+num).classList.remove("hidden");
 }
 
-function showMsg(btn,text){
-btn.innerText=text;
+function showMessage(el){
+el.innerHTML="💖";
 }
 
-let text="Muje nii pata main tmhare liye deserve krta hu ya nii 🥺 lekin tm meri life ki sabse precious chij ho ❤️. Pahle ki sari galtiya bhula kar tmhare birthday ke din se ek nayi suruat karte hai na bby 🥺🤗. Ho sake to please mujhe maaf kar dena aur kabhi chhod ke mat jana. Love you so much dear wife ❤️😘";
-let i=0;
-function typeWriter(){
-if(i<text.length){
-document.getElementById("typewriter").innerHTML+=text.charAt(i);
-i++;
-setTimeout(typeWriter,40);
+function noClick(){
+document.getElementById("noEmoji").style.display="block";
 }
-}
-typeWriter();
 
-let slides=document.querySelectorAll('.slideshow img');
-let index=0;
-setInterval(()=>{
-slides[index].classList.remove('active');
-index=(index+1)%slides.length;
-slides[index].classList.add('active');
+function yesClick(){
+document.getElementById("loading").style.display="block";
+
+setTimeout(()=>{
+document.getElementById("loading").style.display="none";
+document.getElementById("meter").style.display="block";
+document.getElementById("fill").style.width="100%";
 },2000);
+}
 
-setInterval(()=>{
+/* floating hearts */
+for(let i=0;i<15;i++){
 let heart=document.createElement("div");
 heart.className="heart";
 heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(Math.random()*3+3)+"s";
+heart.style.left=Math.random()*100+"%";
+heart.style.fontSize=(20+Math.random()*20)+"px";
+heart.style.animationDuration=(4+Math.random()*4)+"s";
 document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
-},500);
+}
 </script>
 
 </body>
