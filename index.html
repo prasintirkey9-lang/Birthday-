@@ -16,7 +16,7 @@ font-family:'Segoe UI',sans-serif;
 body{
 height:100vh;
 overflow:hidden;
-background:radial-gradient(circle at top,#3a0026,#12000f);
+background:radial-gradient(circle at top,#2a001c,#000);
 display:flex;
 align-items:center;
 justify-content:center;
@@ -28,7 +28,7 @@ position:relative;
 .heart{
 position:absolute;
 bottom:-20px;
-animation:float 6s linear infinite;
+animation:float 7s linear infinite;
 opacity:0.7;
 }
 @keyframes float{
@@ -57,17 +57,24 @@ pointer-events:none;
 transform:scale(0.9);
 }
 
+/* Glowing Name */
+.glow-name{
+font-size:26px;
+margin-top:10px;
+color:#ff80bf;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 10px #ff2f80;}
+to{text-shadow:0 0 25px #ff99cc,0 0 40px #ff2f80;}
+}
+
 h1{
 font-size:30px;
 margin-bottom:10px;
 color:#ff6aa5;
 text-shadow:0 0 15px #ff2f80;
-}
-
-h2{
-font-size:22px;
-margin-bottom:20px;
-color:white;
 }
 
 button{
@@ -82,7 +89,6 @@ margin-top:20px;
 box-shadow:0 0 20px #ff2f80;
 transition:0.3s;
 }
-
 button:hover{
 transform:scale(1.1);
 }
@@ -108,13 +114,12 @@ border-radius:20px;
 width:95%;
 max-width:420px;
 box-shadow:0 0 30px #ff2f80;
-overflow-y:auto;
-max-height:80vh;
 }
 
 .card p{
 font-size:14px;
 line-height:1.6;
+min-height:150px;
 }
 </style>
 </head>
@@ -130,47 +135,33 @@ heart.className="heart";
 heart.style.left=Math.random()*100+"vw";
 heart.style.fontSize=(15+Math.random()*20)+"px";
 document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
-},800);
+setTimeout(()=>heart.remove(),7000);
+},700);
 </script>
 
 <!-- PAGE 1 -->
 <div id="page1" class="section">
 <h1>Happy Birthday My Love 🎂❤️</h1>
-<h2>Mrs. Anshu Tirkey 💖</h2>
+<div class="glow-name">Mrs. Anshu Tirkey 💖</div>
 <button onclick="next(2)">Open Your Surprise 💌</button>
 </div>
 
 <!-- PAGE 2 -->
 <div id="page2" class="section hidden">
-<h1>Types Of My Love For You ❤️</h1>
+<h1>My Love For You ❤️</h1>
 
 <div class="love-box">HappY birthdaY my wife ❤️😘</div>
 <div class="love-box">Please Mujhe chor ke kabhi mat jana🥺❤️</div>
 <div class="love-box">Love you so much my sweetheart ❤️🥺😘🤗</div>
 
-<button onclick="next(3)">See Final Note 💖</button>
+<button onclick="next(3); startTyping();">See Final Note 💖</button>
 </div>
 
 <!-- PAGE 3 -->
 <div id="page3" class="section hidden">
 <div class="card">
 <h2>A Little Note For You 💌</h2>
-<p>
-Muje nii pata main tmhare liye deserve krta hu ya nii🥺 lekin tm meri life ki sabse precious chij ho❤️.<br><br>
-
-Pahle ki sari galtiya bhula kar tmhare birthdaY ke din se ek nayi suruat karte hai na bby 🥺🤗.<br><br>
-
-Ho sake to Please muje maaf kar dena or Please muje kabhi chor ke mat jana.  
-Main tmko bahut miss kr rha hu🥺🥺.<br><br>
-
-Anshu tm duniya ki sabse best lover ho muje tmhare alawa koi or pasand v nii aati Please mat jana🥺❤️.<br><br>
-
-HappY birthdaY My Wife😘❤️  
-Tm hamesha khush rahna main tmhare liye hamesha khada hu or i wish ki tmhara har sapna pura ho😘❤️🤗.<br><br>
-
-Love you so much dear Wife🥺😘🤗❤️
-</p>
+<p id="typedText"></p>
 </div>
 </div>
 
@@ -180,6 +171,35 @@ document.getElementById("page1").classList.add("hidden");
 document.getElementById("page2").classList.add("hidden");
 document.getElementById("page3").classList.add("hidden");
 document.getElementById("page"+num).classList.remove("hidden");
+}
+
+/* Typewriter Effect */
+const message = `Muje nii pata main tmhare liye deserve krta hu ya nii🥺 lekin tm meri life ki sabse precious chij ho❤️.
+
+Pahle ki sari galtiya bhula kar tmhare birthdaY ke din se ek nayi suruat karte hai na bby 🥺🤗.
+
+Ho sake to Please muje maaf kar dena or Please muje kabhi chor ke mat jana. Main tmko bahut miss kr rha hu🥺🥺.
+
+Anshu tm duniya ki sabse best lover ho muje tmhare alawa koi or pasand v nii aati Please mat jana🥺❤️.
+
+HappY birthdaY My Wife😘❤️ Tm hamesha khush rahna main tmhare liye hamesha khada hu or i wish ki tmhara har sapna pura ho😘❤️🤗.
+
+Love you so much dear Wife🥺😘🤗❤️`;
+
+let i = 0;
+function startTyping(){
+let speed = 40;
+let textArea = document.getElementById("typedText");
+textArea.innerHTML = "";
+i = 0;
+function type(){
+if(i < message.length){
+textArea.innerHTML += message.charAt(i);
+i++;
+setTimeout(type, speed);
+}
+}
+type();
 }
 </script>
 
