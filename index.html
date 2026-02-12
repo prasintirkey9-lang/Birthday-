@@ -2,22 +2,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Birthday Surprise</title>
+<title>Birthday Surprise 💖</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
 font-family:'Segoe UI',sans-serif;
-background: linear-gradient(-45deg,#2b0033,#800040,#ff0066,#3d003d);
-background-size:400% 400%;
-animation:bgMove 10s ease infinite;
-color:white;
+height:100vh;
 overflow:hidden;
-text-align:center;
+color:white;
+background:linear-gradient(-45deg,#1a001f,#660033,#ff0066,#33001a);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
 }
 
-@keyframes bgMove{
+@keyframes bg{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
@@ -31,47 +31,52 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-transition:0.6s;
+text-align:center;
+transition:0.7s ease;
+padding:20px;
 }
 
 .hidden{
 opacity:0;
 pointer-events:none;
+transform:scale(0.9);
 }
 
-h1{
+.cinematic{
 font-size:30px;
-text-shadow:0 0 20px #ff66b2;
-}
-
-.glow{
+font-weight:bold;
+text-shadow:0 0 20px #ff4da6;
 animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
-from{text-shadow:0 0 10px #ff66b2;}
-to{text-shadow:0 0 25px #ff1493;}
+from{text-shadow:0 0 10px #ff4da6;}
+to{text-shadow:0 0 30px #ff1493;}
 }
 
-.bounce{
+.days{
+margin-top:15px;
+font-size:18px;
+color:#ffd1dc;
 animation:bounce 1.5s infinite;
+text-shadow:0 0 15px #ff66b2;
 }
 
 @keyframes bounce{
 0%,100%{transform:translateY(0);}
-50%{transform:translateY(-10px);}
+50%{transform:translateY(-8px);}
 }
 
 button{
+margin-top:20px;
 padding:12px 28px;
 border:none;
 border-radius:30px;
 background:#ff2d86;
 color:white;
 font-size:16px;
-margin-top:20px;
-box-shadow:0 0 15px #ff4da6;
 cursor:pointer;
+box-shadow:0 0 20px #ff4da6;
 transition:0.3s;
 }
 
@@ -79,10 +84,23 @@ button:hover{
 transform:scale(1.1);
 }
 
+.note-box{
+margin-top:20px;
+width:90%;
+max-width:400px;
+background:rgba(255,255,255,0.1);
+padding:15px;
+border-radius:15px;
+font-size:14px;
+line-height:1.6;
+backdrop-filter:blur(5px);
+}
+
 .heart{
 position:absolute;
 color:#ff4da6;
 animation:float 6s linear infinite;
+opacity:0.7;
 }
 
 @keyframes float{
@@ -92,39 +110,45 @@ animation:float 6s linear infinite;
 }
 
 #noEmoji{
-font-size:50px;
-margin-top:20px;
+font-size:55px;
 display:none;
+margin-top:20px;
 animation:shake 0.5s infinite;
 }
 
 @keyframes shake{
 0%{transform:translateX(0);}
-25%{transform:translateX(-5px);}
-50%{transform:translateX(5px);}
-75%{transform:translateX(-5px);}
+25%{transform:translateX(-6px);}
+50%{transform:translateX(6px);}
+75%{transform:translateX(-6px);}
 100%{transform:translateX(0);}
 }
 
 #loading{
-margin-top:20px;
 display:none;
+margin-top:20px;
+font-size:18px;
 }
 
 #meter{
-width:250px;
-height:20px;
-background:#fff;
+display:none;
+width:260px;
+height:22px;
+background:white;
 border-radius:20px;
 overflow:hidden;
-margin-top:20px;
-display:none;
+margin-top:15px;
 }
 
 #fill{
 height:100%;
 width:0%;
 background:#ff0066;
+color:white;
+text-align:center;
+line-height:22px;
+font-size:13px;
+font-weight:bold;
 transition:3s;
 }
 </style>
@@ -134,38 +158,34 @@ transition:3s;
 
 <!-- PAGE 1 -->
 <div class="page" id="page1">
-<h1 class="glow">✨ Happy Birthday My Love ❤️</h1>
-<h1 class="glow">👑 Mrs. Anshu Tirkey 👑</h1>
-<p class="bounce glow" style="margin-top:15px;">
-Aaj hamare relationship ko 1416 din ho gaye 🤗😘
-</p>
-<button onclick="nextPage(2)">Open Your Surprise ✨</button>
+<div class="cinematic">✨ Happy Birthday My Love ❤️</div>
+<div class="cinematic">👑 Mrs. Anshu Tirkey 👑</div>
+<div class="days">Aaj hamare relationship ko 1416 din ho gaye 🤗😘</div>
+<button onclick="nextPage(2)">Open Your Surprise 💖</button>
 </div>
 
 <!-- PAGE 2 -->
 <div class="page hidden" id="page2">
-<h1>Tap Hearts To Reveal ❤️</h1>
-<div onclick="showMessage(this)">❤️</div>
-<div onclick="showMessage(this)">❤️</div>
-<div onclick="showMessage(this)">❤️</div>
-<button onclick="nextPage(3)">Next 💖</button>
+<h2>A little note for you ❤️</h2>
+
+<div class="note-box">
+Muje nii pata main tmhare liye deserve krta hu ya nii🥺 lekin tm meri life ki sabse precious chij ho❤️. 
+Pahle ki sari galtiya bhula kar tmhare birthdaY ke din se ek nayi suruat karte hai na bby 🥺🤗. 
+Ho sake to Please muje maaf kar dena or Please muje kabhi chor ke mat jana. 
+Main tmko bahut miss kr rha hu🥺🥺. 
+Anshu tm duniya ki sabse best lover ho muje tmhare alawa koi or pasand v nii aati Please mat jana🥺❤️. 
+
+HappY birthdaY My Wife😘❤️ 
+Tm hamesha khush rahna main tmhare liye hamesha khada hu or i wish ki tmhara har sapna pura ho😘❤️🤗 
+
+Love you so much dear Wife🥺😘🤗❤️
+</div>
+
+<button onclick="nextPage(3)">Final Question 💍</button>
 </div>
 
 <!-- PAGE 3 -->
 <div class="page hidden" id="page3">
-<h1>A little note for you ❤️</h1>
-<p style="width:80%;margin-top:20px;">
-Muje nii pata main tmhare liye deserve krta hu ya nii 🥺
-lekin tm meri life ki sabse precious chij ho ❤️.
-Pahle ki sari galtiya bhula kar tmhare birthday ke din
-se ek nayi suruat karte hai na bby 🤗😘.
-Please muje kabhi chor ke mat jana ❤️.
-</p>
-<button onclick="nextPage(4)">Final Question 💍</button>
-</div>
-
-<!-- PAGE 4 -->
-<div class="page hidden" id="page4">
 <h1>Will You Marry Me? 💍</h1>
 
 <button onclick="yesClick()">Yes 😘</button>
@@ -176,7 +196,7 @@ Please muje kabhi chor ke mat jana ❤️.
 <div id="loading">Loading Love Meter...</div>
 
 <div id="meter">
-<div id="fill"></div>
+<div id="fill">1000% 💖</div>
 </div>
 
 </div>
@@ -185,10 +205,6 @@ Please muje kabhi chor ke mat jana ❤️.
 function nextPage(num){
 document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
 document.getElementById("page"+num).classList.remove("hidden");
-}
-
-function showMessage(el){
-el.innerHTML="💖";
 }
 
 function noClick(){
@@ -205,14 +221,14 @@ document.getElementById("fill").style.width="100%";
 },2000);
 }
 
-/* floating hearts */
-for(let i=0;i<15;i++){
+/* Floating hearts */
+for(let i=0;i<18;i++){
 let heart=document.createElement("div");
 heart.className="heart";
 heart.innerHTML="❤️";
 heart.style.left=Math.random()*100+"%";
-heart.style.fontSize=(20+Math.random()*20)+"px";
-heart.style.animationDuration=(4+Math.random()*4)+"s";
+heart.style.fontSize=(18+Math.random()*25)+"px";
+heart.style.animationDuration=(4+Math.random()*5)+"s";
 document.body.appendChild(heart);
 }
 </script>
