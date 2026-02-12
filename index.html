@@ -16,13 +16,38 @@ font-family:'Segoe UI',sans-serif;
 body{
 height:100vh;
 overflow:hidden;
-background:radial-gradient(circle at top,#2a001c,#000);
+background:#000;
 display:flex;
 align-items:center;
 justify-content:center;
 color:white;
 position:relative;
 cursor:none;
+}
+
+/* Slow Moving Background Hearts */
+.bg-heart{
+position:absolute;
+font-size:14px;
+opacity:0.15;
+animation:slowMove 25s linear infinite;
+}
+@keyframes slowMove{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+/* Floating Hearts */
+.float-heart{
+position:absolute;
+bottom:-20px;
+animation:float 7s linear infinite;
+opacity:0.7;
+}
+@keyframes float{
+0%{transform:translateY(0);opacity:0}
+50%{opacity:1}
+100%{transform:translateY(-100vh);opacity:0}
 }
 
 /* Sparkle Cursor */
@@ -39,19 +64,6 @@ animation:fade 1s linear forwards;
 to{opacity:0; transform:scale(2);}
 }
 
-/* Floating Hearts */
-.heart{
-position:absolute;
-bottom:-20px;
-animation:float 7s linear infinite;
-opacity:0.7;
-}
-@keyframes float{
-0%{transform:translateY(0);opacity:0}
-50%{opacity:1}
-100%{transform:translateY(-100vh);opacity:0}
-}
-
 /* Sections */
 .section{
 position:absolute;
@@ -64,6 +76,7 @@ justify-content:center;
 text-align:center;
 padding:20px;
 transition:0.8s ease;
+background:radial-gradient(circle at top,#2a001c,#000);
 }
 .hidden{
 opacity:0;
@@ -80,14 +93,14 @@ animation:glow 2s infinite alternate;
 }
 @keyframes glow{
 from{text-shadow:0 0 10px #ff2f80;}
-to{text-shadow:0 0 30px #ff99cc,0 0 50px #ff2f80;}
+to{text-shadow:0 0 40px #ff99cc;}
 }
 
 h1{
 font-size:30px;
 margin-bottom:10px;
 color:#ff6aa5;
-text-shadow:0 0 15px #ff2f80;
+text-shadow:0 0 20px #ff2f80;
 }
 
 button{
@@ -116,15 +129,13 @@ backdrop-filter:blur(8px);
 box-shadow:0 0 15px rgba(255,0,120,0.5);
 }
 
-/* Special Heart 4 */
 .special-love{
 font-size:18px;
 font-weight:bold;
 color:#ff99cc;
 animation:pulse 1.5s infinite;
-text-shadow:0 0 15px #ff2f80;
+text-shadow:0 0 20px #ff2f80;
 }
-
 @keyframes pulse{
 0%{transform:scale(1);}
 50%{transform:scale(1.08);}
@@ -139,7 +150,7 @@ padding:25px;
 border-radius:20px;
 width:95%;
 max-width:420px;
-box-shadow:0 0 30px #ff2f80;
+box-shadow:0 0 40px #ff2f80;
 }
 .card p{
 font-size:14px;
@@ -158,6 +169,31 @@ color:#ffb3d9;
 
 <body>
 
+<!-- Slow Background Hearts -->
+<script>
+for(let i=0;i<40;i++){
+let h=document.createElement("div");
+h.innerHTML="❤️";
+h.className="bg-heart";
+h.style.left=Math.random()*100+"vw";
+h.style.animationDuration=(20+Math.random()*20)+"s";
+document.body.appendChild(h);
+}
+</script>
+
+<!-- Floating Hearts -->
+<script>
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.innerHTML="❤️";
+heart.className="float-heart";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(15+Math.random()*20)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),7000);
+},700);
+</script>
+
 <!-- Sparkle Cursor -->
 <script>
 document.addEventListener("mousemove",function(e){
@@ -168,19 +204,6 @@ spark.style.top=e.pageY+"px";
 document.body.appendChild(spark);
 setTimeout(()=>spark.remove(),1000);
 });
-</script>
-
-<!-- Floating Hearts -->
-<script>
-setInterval(()=>{
-let heart=document.createElement("div");
-heart.innerHTML="❤️";
-heart.className="heart";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(15+Math.random()*20)+"px";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),7000);
-},700);
 </script>
 
 <!-- PAGE 1 -->
@@ -198,10 +221,7 @@ setTimeout(()=>heart.remove(),7000);
 <div class="love-box">HappY birthdaY my wife ❤️😘</div>
 <div class="love-box">Please Mujhe chor ke kabhi mat jana🥺❤️</div>
 <div class="love-box">Love you so much my sweetheart ❤️🥺😘🤗</div>
-
-<div class="love-box special-love">
-Aaj hamare relationship ko 1415 din ho gaye 💍❤️
-</div>
+<div class="love-box special-love">Aaj hamare relationship ko 1415 din ho gaye 💍❤️</div>
 
 <button onclick="next(3); startTyping(); firework();">See Final Note 💖</button>
 </div>
@@ -211,6 +231,7 @@ Aaj hamare relationship ko 1415 din ho gaye 💍❤️
 <div class="card">
 <h2>A Little Note For You 💌</h2>
 <p id="typedText"></p>
+<button onclick="foreverPopup()">Will you stay forever? 💍</button>
 </div>
 </div>
 
@@ -252,7 +273,7 @@ type();
 
 /* Firework */
 function firework(){
-for(let i=0;i<25;i++){
+for(let i=0;i<30;i++){
 let spark=document.createElement("div");
 spark.className="sparkle";
 spark.style.left=Math.random()*100+"vw";
@@ -272,6 +293,11 @@ document.getElementById("loveCounter").innerText=
 "Together for "+days+" days ❤️";
 }
 updateCounter();
+
+/* Forever Popup */
+function foreverPopup(){
+alert("Forever and Always ❤️💍");
+}
 </script>
 
 </body>
