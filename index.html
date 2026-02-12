@@ -15,24 +15,48 @@
 html,body{
     height:100%;
     overflow:hidden;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family:'Segoe UI', Arial, sans-serif;
     background: radial-gradient(circle at center, #6a004f, #000);
     color:white;
 }
 
-/* Full screen sections */
+/* Floating Hearts */
+.heart-bg{
+    position:fixed;
+    bottom:-50px;
+    font-size:20px;
+    animation: float 8s linear infinite;
+    opacity:0.7;
+}
+
+@keyframes float{
+    0%{ transform:translateY(0) scale(1); opacity:0.7; }
+    100%{ transform:translateY(-110vh) scale(1.5); opacity:0; }
+}
+
+/* Sections */
 .section{
     position:fixed;
     width:100%;
     height:100%;
     top:0;
     left:0;
-    display:none;
+    display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
     text-align:center;
     padding:20px;
+    opacity:0;
+    transform:translateX(50px);
+    transition: all 0.6s ease;
+    pointer-events:none;
+}
+
+.section.active{
+    opacity:1;
+    transform:translateX(0);
+    pointer-events:auto;
 }
 
 /* Buttons */
@@ -45,9 +69,13 @@ button{
     color:white;
     font-size:18px;
     cursor:pointer;
+    transition:0.3s;
+}
+button:hover{
+    transform:scale(1.05);
 }
 
-/* Hearts */
+/* Hearts clickable */
 .heart{
     font-size:40px;
     cursor:pointer;
@@ -55,16 +83,15 @@ button{
     transition:0.3s;
 }
 .heart:hover{
-    transform:scale(1.2);
+    transform:scale(1.3);
 }
 
 .message{
     display:none;
     font-size:18px;
-    margin-top:5px;
 }
 
-/* Note box */
+/* Note Box */
 .note-box{
     background:#ffc0d9;
     color:#000;
@@ -75,11 +102,10 @@ button{
     line-height:1.6;
 }
 
-/* Headings */
+/* Titles */
 .main-title{
     font-size:34px;
 }
-
 .name{
     font-size:22px;
     margin-top:10px;
@@ -89,8 +115,20 @@ button{
 
 <body>
 
+<!-- Floating hearts generate -->
+<script>
+for(let i=0;i<20;i++){
+    let heart=document.createElement("div");
+    heart.innerHTML="❤️";
+    heart.className="heart-bg";
+    heart.style.left=Math.random()*100+"%";
+    heart.style.animationDuration=(5+Math.random()*5)+"s";
+    document.body.appendChild(heart);
+}
+</script>
+
 <!-- STEP 1 -->
-<div id="step1" class="section" style="display:flex;">
+<div id="step1" class="section active">
     <div class="main-title">Happy Birthday My Love 🎂❤️</div>
     <div class="name">Mrs. Anshu Tirkey</div>
     <button onclick="nextStep(2)">Open Your Surprise 💕</button>
@@ -138,10 +176,10 @@ button{
 
 <script>
 function nextStep(step){
-    document.getElementById("step1").style.display="none";
-    document.getElementById("step2").style.display="none";
-    document.getElementById("step3").style.display="none";
-    document.getElementById("step"+step).style.display="flex";
+    document.querySelectorAll(".section").forEach(sec=>{
+        sec.classList.remove("active");
+    });
+    document.getElementById("step"+step).classList.add("active");
 }
 
 function reveal(num){
