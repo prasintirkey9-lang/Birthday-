@@ -3,20 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday ❤️</title>
+<title>For Mrs. Anshu ❤️</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI, sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
 
 body{
-overflow:hidden;
-background:linear-gradient(135deg,#3b003b,#6a0055,#ff0066);
-color:white;
 height:100vh;
+overflow:hidden;
+background:radial-gradient(circle at top,#4b0036,#99004d,#ff0066);
+color:white;
 display:flex;
 justify-content:center;
 align-items:center;
-text-align:center;
 }
 
 .page{
@@ -27,88 +26,134 @@ display:none;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-animation:fade 0.8s ease;
+text-align:center;
+padding:20px;
+animation:fade 1s ease;
 }
 
 @keyframes fade{
-from{opacity:0;transform:scale(0.95);}
+from{opacity:0;transform:scale(0.9);}
 to{opacity:1;transform:scale(1);}
 }
 
-button{
-padding:12px 25px;
-border:none;
-border-radius:30px;
-background:linear-gradient(45deg,#ff0066,#ff4da6);
-color:white;
-font-size:17px;
-cursor:pointer;
-margin-top:20px;
-box-shadow:0 0 15px #ff4da6;
-transition:0.3s;
-}
-button:hover{transform:scale(1.1);}
-
-.glow{
-font-size:28px;
+/* FIRST PAGE SPECIAL */
+.hero-title{
+font-size:38px;
 font-weight:bold;
+background:linear-gradient(45deg,#fff,#ffd6f6,#fff);
+-webkit-background-clip:text;
+color:transparent;
+animation:shine 3s linear infinite;
+}
+
+@keyframes shine{
+0%{background-position:-200px;}
+100%{background-position:200px;}
+}
+
+.hero-sub{
+margin-top:10px;
+font-size:18px;
+opacity:0.9;
+letter-spacing:2px;
+animation:fadeIn 3s ease;
+}
+
+.name{
+font-size:30px;
+margin-top:10px;
+color:#ffd700;
+text-shadow:0 0 15px gold;
 animation:glow 2s infinite alternate;
 }
+
 @keyframes glow{
-from{text-shadow:0 0 5px white;}
-to{text-shadow:0 0 25px #ff99cc;}
+from{text-shadow:0 0 10px gold;}
+to{text-shadow:0 0 25px white;}
 }
 
-.heart{font-size:40px;cursor:pointer;margin:10px;}
-.hidden{display:none;}
+.days{
+margin-top:15px;
+font-size:20px;
+color:#fff;
+background:rgba(255,255,255,0.15);
+padding:8px 15px;
+border-radius:20px;
+}
+
+button{
+margin-top:25px;
+padding:12px 30px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#ff4da6,#ff0066);
+color:white;
+font-size:16px;
+cursor:pointer;
+box-shadow:0 0 15px pink;
+}
+
+/* RELATIONSHIP TEXT GLOW + BOUNCE */
+.special-days{
+margin-top:25px;
+font-size:20px;
+font-weight:bold;
+color:#ffd6f6;
+text-shadow:0 0 10px #ff99cc;
+animation:bounce 1.5s infinite, glowText 2s infinite alternate;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+@keyframes glowText{
+from{text-shadow:0 0 10px #ff99cc;}
+to{text-shadow:0 0 25px white;}
+}
 
 .note-box{
-background:#ffffff22;
-padding:25px;
+background:rgba(255,255,255,0.15);
+padding:20px;
 border-radius:20px;
-width:85%;
-max-width:500px;
-margin-top:20px;
+max-width:90%;
 }
 
-.slideshow{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-}
 .slideshow img{
-width:140px;
-height:200px;
+width:220px;
+height:320px;
 object-fit:cover;
 border-radius:15px;
-margin:8px;
+margin:10px;
+box-shadow:0 0 15px white;
 }
 
-.float-heart{
-position:absolute;
-color:#ff99cc;
-animation:float 6s linear infinite;
-}
-@keyframes float{
-0%{transform:translateY(100vh);opacity:0;}
-100%{transform:translateY(-10vh);opacity:1;}
-}
-
-.love-meter{
-width:80%;
-height:20px;
-background:#fff3;
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+color:black;
+padding:25px;
 border-radius:20px;
-margin-top:20px;
-overflow:hidden;
+display:none;
+text-align:center;
+box-shadow:0 0 20px pink;
 }
-.fill{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,#ff0066,#ff99cc);
-animation:fillAnim 3s forwards;
+
+.heart{
+position:absolute;
+color:red;
+animation:float 6s linear infinite;
+font-size:20px;
 }
-@keyframes fillAnim{to{width:100%;}}
+
+@keyframes float{
+from{transform:translateY(100vh);}
+to{transform:translateY(-10vh);}
+}
 </style>
 </head>
 
@@ -116,27 +161,25 @@ animation:fillAnim 3s forwards;
 
 <!-- PAGE 1 -->
 <div id="page1" class="page" style="display:flex;">
-<h1>Happy Birthday My Love ❤️</h1>
-<h2 class="glow">Mrs. Anshu Tirkey</h2>
-<button onclick="nextPage('page2')">Open Your Surprise 💖</button>
+<div class="hero-title">💖 Happy Birthday My Love 💖</div>
+<div class="hero-sub">A Special Day For The Queen Of My Heart 👑</div>
+<div class="name">Mrs. Anshu Tirkey ✨</div>
+<div class="days" id="daysCount"></div>
+<button onclick="nextPage('page2')">Open Your Surprise 💌</button>
 </div>
 
 <!-- PAGE 2 -->
 <div id="page2" class="page">
-<h2>Tap each heart ❤️</h2>
-<div>
-<span class="heart" onclick="reveal('m1')">❤️</span>
-<span class="heart" onclick="reveal('m2')">❤️</span>
-<span class="heart" onclick="reveal('m3')">❤️</span>
-<span class="heart" onclick="reveal('m4')">💍</span>
+<h2>Tap Hearts To Reveal ❤️</h2>
+<button onclick="alert('HappY birthdaY my wife ❤️😘')">❤️</button>
+<button onclick="alert('Please mujhe chor ke kabhi mat jana 🥺❤️')">❤️</button>
+<button onclick="alert('Love you so much my sweetheart ❤️🥺😘🤗')">❤️</button>
+
+<div class="special-days">
+Aaj hamare relationship ko 1416 din ho gaye 🤗😘
 </div>
 
-<p id="m1" class="hidden">HappY birthdaY my wife ❤️😘</p>
-<p id="m2" class="hidden">Please Mujhe chor ke kabhi mat jana 🥺❤️</p>
-<p id="m3" class="hidden">Love you so much my sweetheart ❤️🥺😘🤗</p>
-<p id="m4" class="hidden">Aaj hamare relationship ko 1415 din ho gaye 💍❤️</p>
-
-<button onclick="nextPage('page3')">See Final Note 💌</button>
+<button onclick="nextPage('page3')">Next 💞</button>
 </div>
 
 <!-- PAGE 3 -->
@@ -145,9 +188,6 @@ animation:fillAnim 3s forwards;
 <div class="note-box">
 <p id="typewriter"></p>
 </div>
-
-<div class="love-meter"><div class="fill"></div></div>
-
 <button onclick="nextPage('page4')">Our Memories 💕</button>
 </div>
 
@@ -155,84 +195,82 @@ animation:fillAnim 3s forwards;
 <div id="page4" class="page">
 <h2>Our Beautiful Memories 💖</h2>
 <div class="slideshow">
-<img src="anshu1.jpg">
-<img src="anshu2.jpg">
-<img src="anshu3.jpg">
-<img src="anshu4.jpg">
-<img src="anshu5.jpg">
+<img src="IMG-20260212-WA0042.jpg">
 </div>
-
-<button onclick="nextPage('page5')">One Last Question 💍</button>
+<button onclick="nextPage('page5')">Final Question 💍</button>
 </div>
 
 <!-- PAGE 5 -->
 <div id="page5" class="page">
-<h2>Will You Stay Forever With Me? 💍</h2>
-<button onclick="yes()">Yes 😘</button>
-<button id="noBtn" onmouseover="moveNo()">No 😅</button>
+<h2>Will You Marry Me? 💍❤️</h2>
+<button onclick="showPopup()">Yes 😘</button>
+</div>
+
+<div class="popup" id="popup">
+<h3>She Said YES 💖💍</h3>
+<p>Forever Together ❤️</p>
+<button onclick="nextPage('page6')">See Our Future 💫</button>
+</div>
+
+<!-- PAGE 6 -->
+<div id="page6" class="page">
+<h2>Forever & Always ❤️</h2>
+<img src="IMG-20260212-WA0042.jpg" style="width:250px;border-radius:20px;box-shadow:0 0 20px white;">
 </div>
 
 <script>
 
 function nextPage(id){
-document.querySelectorAll('.page').forEach(p=>p.style.display='none');
-document.getElementById(id).style.display='flex';
+document.querySelectorAll(".page").forEach(p=>p.style.display="none");
+document.getElementById(id).style.display="flex";
+if(id==="page3") startTyping();
 }
 
-function reveal(id){
-document.getElementById(id).classList.remove("hidden");
+function showPopup(){
+document.getElementById("popup").style.display="block";
 }
 
-function moveNo(){
-let btn=document.getElementById("noBtn");
-btn.style.position="absolute";
-btn.style.top=Math.random()*80+"%";
-btn.style.left=Math.random()*80+"%";
-}
+const startDate=new Date("March 31, 2022");
+const birthday=new Date("February 13, 2026");
+const diffTime=birthday-startDate;
+const diffDays=Math.floor(diffTime/(1000*60*60*24));
+document.getElementById("daysCount").innerText=
+"Together for "+diffDays+" beautiful days 💍❤️";
 
-function yes(){
-alert("Yayyy ❤️ I Love You Forever 💍💖");
-}
+const text=`Muje nii pata main tmhare liye deserve krta hu ya nii🥺 lekin tm meri life ki sabse precious chij ho❤️.
 
-/* TYPEWRITER FULL TEXT */
-let text=`Muje nii pata main tmhare liye deserve krta hu ya nii 🥺 
-lekin tm meri life ki sabse precious chij ho ❤️.
+Pahle ki sari galtiya bhula kar tmhare birthdaY ke din se ek nayi suruat karte hai na bby 🥺🤗.
 
-Pahle ki sari galtiya bhula kar tmhare birthdaY ke din se 
-ek nayi suruat karte hai na bby 🥺🤗.
+Ho sake to Please muje maaf kar dena or Please muje kabhi chor ke mat jana. Main tmko bahut miss kr rha hu🥺🥺.
 
-Ho sake to Please muje maaf kar dena or Please muje kabhi chor ke mat jana.
-Main tmko bahut miss kr rha hu 🥺🥺.
+Anshu tm duniya ki sabse best lover ho muje tmhare alawa koi or pasand v nii aati Please mat jana🥺❤️.
 
-Anshu tm duniya ki sabse best lover ho muje tmhare alawa koi or pasand v nii aati Please mat jana 🥺❤️.
+HappY birthdaY My Wife😘❤️ Tm hamesha khush rahna main tmhare liye hamesha khada hu or i wish ki tmhara har sapna pura ho😘❤️🤗
 
-HappY birthdaY My Wife 😘❤️
-Tm hamesha khush rahna main tmhare liye hamesha khada hu
-or i wish ki tmhara har sapna pura ho 😘❤️🤗
+Love you so much dear Wife🥺😘🤗❤️`;
 
-Love you so much dear Wife 🥺😘🤗❤️`;
-
+function startTyping(){
 let i=0;
-function typeWriter(){
+let target=document.getElementById("typewriter");
+target.innerHTML="";
+function type(){
 if(i<text.length){
-document.getElementById("typewriter").innerHTML+=text.charAt(i);
+target.innerHTML+=text.charAt(i);
 i++;
-setTimeout(typeWriter,35);
+setTimeout(type,25);
 }
 }
-typeWriter();
+type();
+}
 
-/* FLOATING HEARTS */
-function createHeart(){
+setInterval(()=>{
 let heart=document.createElement("div");
-heart.className="float-heart";
-heart.innerHTML="❤️";
+heart.className="heart";
 heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=Math.random()*20+20+"px";
+heart.innerHTML="❤️";
 document.body.appendChild(heart);
 setTimeout(()=>heart.remove(),6000);
-}
-setInterval(createHeart,800);
+},600);
 
 </script>
 
